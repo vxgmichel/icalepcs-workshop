@@ -23,6 +23,20 @@ PyTango History
 
 ---
 
+Started at Alba 
+Tiago Coutinho main contributor
+C++ libtango python binding based on Boost
+
+
+Project moves to the ESRF
+
+
+
+2016-April - MaxIV joins the game.
+
+
+2017-May - Welcome to Solaris.
+
 ---
 
 name: Current Status
@@ -31,6 +45,16 @@ layout: true
 Current Status.
 ===========
 ---
+
+
+
+Project on Github
+
+Last release: v9.2.1
+Release v9.2.2 upcomming
+
+
+
 
 
 ---
@@ -45,21 +69,54 @@ Contributing to PyTango.
 Git workflow.
 ------
 
+ * Github issues.
+
+ * Pull request.
+
+ * PR merged in develop branch  (reviewed and approved).
+
+ * develop  branch merged into master at each release.
+
+
+> Make develop branch as default branch in github
 ---
 
 Unit-testing.
 ---------
+
+ * Based on Pytest.
+
+ * Continious integration:
+    - TravisCI is running tests in a conda environment.
+
+ * 574 tests:
+    - client tests.
+    - server tests.
+    - event tests.
+
+> Useful test context:
+```python 
+from tango.test_utils import DeviceTestContext
+```
 
 ---
 
 Documentation.
 ---------
 
+ * Documentation is generated from the sources.
+
+ * The documentation is now hosted on readthedocs. (PyTango version >= 9.)
+
+
+> Only works with >= python3.5
+
 ---
 
 Coding standards.
 ---------
 
+ * Flake8
 
 ---
 name: Pending issues and future work.
@@ -73,9 +130,12 @@ Pending issues and future work.
 Pending issues
 ------
 
- * Pytango server restart segfault
- * Deprecated NumPy API 
- * Compilation warnings related to zero message queue
+
+ * Pytango server restart segfault.
+
+ * Deprecated NumPy API.
+
+ * Compilation warnings related to zero message queue.
 
 ---
 
@@ -83,11 +143,16 @@ Tango9 missing features:
 ---------
 
 
- * Pipe events
- * Pipe write (client & server)
- * Dynamic commands
- * Forwarded attributes API
- * Device interface change event
+ * Pipe events.
+
+ * Pipe write (client & server).
+
+ * Dynamic commands.
+
+ * Forwarded attributes API.
+
+ * Device interface change event.
+
  * Fill polling cache from the code ?
 
 ---
@@ -100,7 +165,7 @@ Improvements.
  * Git workflow    
  * Continius integration:
     - Official Conda Tango channel
-    - Vonda package build by travis
+    - Conda package build by travis
     - Windows build
  * Change of binding
  * Documentation:
