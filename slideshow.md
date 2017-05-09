@@ -5,10 +5,10 @@ layout: true
 name: title
 class: center, middle
 
-SOLARIS PyTango Workshop.
+SOLARIS PyTango Workshop
 ========================
 
-Lukasz Zytniak - Vincent Michel - Antoine Dupré 
+Lukasz Zytniak - Vincent Michel - Antoine Dupré
 
 May 10th 2017
 
@@ -23,18 +23,17 @@ PyTango History
 
 ---
 
-Started at Alba. 
+Started at Alba.
 
 Tiago Coutinho main contributor.
 
-C++ libtango python binding based on Boost.
+2013 - A new HLAPI for device servers
 
-Project moves to the ESRF.
+2014 - Project moves with Tiago to the ESRF.
 
+2015 - MaxIV joins the game.
 
-
-2016 - MaxIV joins the game.
-
+2016 - PyTango9 is realeased.
 
 2017 - Welcome to Solaris.
 
@@ -43,91 +42,114 @@ Project moves to the ESRF.
 name: Current Status
 layout: true
 
-Current Status.
+Current Status
 ===========
 ---
 
+- github.com/tango-controls/pytango
 
+- 804 commits
 
-Project on Github
+- 10 releases
 
-Last release: v9.2.1
+- 16 contributors
 
-Release v9.2.2 upcomming
+- latest release: v9.2.1
 
-
-
+- version 9.2.2 upcoming
 
 
 ---
 name: Contributing to PyTango
 layout: true
 
-Contributing to PyTango.
+Contributing to PyTango
 ======
 
 ---
 
-Git workflow.
+Git workflow
 ------
 
- * Github issues.
+ * Github issues
 
- * Pull request.
+ * Pull request
 
- * PR merged in develop branch  (reviewed and approved).
+ * PR merged in develop branch  (reviewed and approved)
 
- * develop  branch merged into master at each release.
- 
+ * develop  branch merged into master at each release
+
  * develop branch as default branch in github
+
 ---
 
-Unit-testing.
+Unit-testing
 ---------
 
- * Based on Pytest.
+ * Based on Pytest
 
  * Continious integration:
-    - TravisCI is running tests in a conda environment.
+    - TravisCI is running tests in a conda environment
+    - for python2.7, python3.4, python3.5
 
  * 574 tests:
     - client tests.
     - server tests.
     - event tests.
 
-> Useful test context:
-```python 
+---
+
+Testing
+-------
+
+Useful test context, introduced in 9.2.1:
+
+```python
 from tango.test_utils import DeviceTestContext
+
+with DeviceTestContext(SomeDevice) as proxy:
+    assert proxy.state() == DevState.ON
+```
+
+Or:
+
+```console
+$ python -m tango.test_context some_module.SomeDevice --debug=3
+Ready to accept request
+SomeDevice started on port 8888 with properties {}
+Device access: tango://hostname:8888/test/nodb/somemodule#dbase=no
+Server access: tango://hostname:8888/dserver/Empty/somemodule#dbase=no
 ```
 
 ---
 
-Documentation.
+Documentation
 ---------
 
  * Documentation is generated from the sources.
 
  * The documentation is now hosted on readthedocs. (PyTango version >= 9.)
 
-
-> Only works with >= python3.5
+ * Only works with >= python3.5 (because of the _tango module patch)
 
 ---
 
-Coding standards.
+Coding standards
 ---------
 
- * Flake8 
+ * Flake8
+
    - PEP8
+
    - PyFlake
 
-
+ * There are plugins for most IDEs !
 
 ---
 name: Pending issues and future work.
 layout: true
 
-Pending issues and future work.
+Pending issues and future work
 ============
 ---
 
@@ -136,65 +158,71 @@ Pending issues
 ------
 
 
- * Pytango server restart segfault.
+ * Pytango server restart segfault
 
- * Deprecated NumPy API.
+ * Deprecated NumPy API warnings
 
  * Compilation warnings related to zero message queue.
 
 ---
 
-Tango9 missing features:
+Tango9 missing features
 ---------
 
 
- * Pipe events.
+ * Pipe events (WIP)
 
- * Pipe write (client & server).
+ * Pipe write (client & server, WIP)
 
- * Dynamic commands.
+ * Dynamic commands
 
- * Forwarded attributes API.
+ * Forwarded attributes API
 
- * Device interface change event.
+ * Device interface change event
 
  * Fill polling cache from the code ?
 
 ---
 
-Improvements 1/2.
+Improvements 1/2
 -----
 
 
- * Unit tests
-
- * Git workflow    
+ * Unit tests (always!)
 
  * Continius integration:
+
     - Official Conda Tango channel
+
     - Conda package build by travis
+
     - Windows build
 
- * Change of binding
+ * Change of binding (hard one --')
 
- * Server argparse
+ * Server argparse (easy one!)
 
 ---
 
-Improvements 2/2.
------           
+Improvements 2/2
+-----
 
 
- * Clean python module.
+ * Clean python module (try tango.+TAB in IPython!)
 
- * Refactor tango objects.
+ * Refactor tango objects
 
  * Documentation:
-    - Add documentation about the documentation generation and mock system.
+
+    - Add documentation about the documentation generation and mock system
+
     - Documentation need to be reviewed:
+
         - Make documentation up to date
-        - Promote HL API as the default way of programming in Python.
-        - Document and promote new features.
+
+        - Promote HL API as the default way of programming in Python
+
+        - Document and promote new features
 
 
 ---
@@ -202,18 +230,18 @@ Improvements 2/2.
 name: The MAX-IV approach to tango events.
 layout: true
 
-The MAX-IV approach to tango events.
+The MAX-IV approach to tango events
 ============
 ---
 
+ * Problem with archiving
 
- * HDB++ Archive events.
+ * Change events as default event stream
 
- * Change events as default event stream.
+ * Facade device approach
 
- * Facade device approach.
+ * Archive events as filtered events
 
- * Archive events as filtered events.
 ---
 
 
@@ -277,7 +305,6 @@ Asyncio in PyTango
 ============
 ---
 
-Fill free to test it ! 
+Fill free to test it !
 
 ---
-
