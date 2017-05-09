@@ -23,19 +23,20 @@ PyTango History
 
 ---
 
-Started at Alba 
-Tiago Coutinho main contributor
-C++ libtango python binding based on Boost
+Started at Alba. 
+
+Tiago Coutinho main contributor.
+
+C++ libtango python binding based on Boost.
+
+Project moves to the ESRF.
 
 
-Project moves to the ESRF
+
+2016 - MaxIV joins the game.
 
 
-
-2016-April - MaxIV joins the game.
-
-
-2017-May - Welcome to Solaris.
+2017 - Welcome to Solaris.
 
 ---
 
@@ -51,6 +52,7 @@ Current Status.
 Project on Github
 
 Last release: v9.2.1
+
 Release v9.2.2 upcomming
 
 
@@ -76,9 +78,8 @@ Git workflow.
  * PR merged in develop branch  (reviewed and approved).
 
  * develop  branch merged into master at each release.
-
-
-> Make develop branch as default branch in github
+ 
+ * develop branch as default branch in github
 ---
 
 Unit-testing.
@@ -116,7 +117,11 @@ Documentation.
 Coding standards.
 ---------
 
- * Flake8
+ * Flake8 
+   - PEP8
+   - PyFlake
+
+
 
 ---
 name: Pending issues and future work.
@@ -157,27 +162,40 @@ Tango9 missing features:
 
 ---
 
-Improvements.
+Improvements 1/2.
 -----
 
 
  * Unit tests
+
  * Git workflow    
+
  * Continius integration:
     - Official Conda Tango channel
     - Conda package build by travis
     - Windows build
+
  * Change of binding
+
+ * Server argparse
+
+---
+
+Improvements 2/2.
+-----           
+
+
+ * Clean python module.
+
+ * Refactor tango objects.
+
  * Documentation:
-    - Documentation about documentation generation and mock system.
+    - Add documentation about the documentation generation and mock system.
     - Documentation need to be reviewed:
         - Make documentation up to date
         - Promote HL API as the default way of programming in Python.
         - Document and promote new features.
- * Server argparse
- * Simplify DeviceImpl
- * Clean directory tree
- * Refactor tango objects
+
 
 ---
 
@@ -189,19 +207,24 @@ The MAX-IV approach to tango events.
 ---
 
 
- * HDB++ Archive events
- * Change events as default event stream 
- * Facade device approach
- * Archive events as filtered events
+ * HDB++ Archive events.
+
+ * Change events as default event stream.
+
+ * Facade device approach.
+
+ * Archive events as filtered events.
 ---
 
 
-name: The facadedevice library: a reactive event-based approach to high-level tango devices
+name: The facadedevice library.
 layout: true
 
-The facadedevice library: a reactive event-based approach to high-level tango devices
+The facadedevice library.
 ============
 ---
+
+[Facadedevice library](http://tango-facadedevice.readthedocs.io/en/latest/): A reactive event-based approach to high-level tango devices
 
 ---
 
@@ -211,34 +234,50 @@ layout: true
 itango features and jupyter integration
 ============
 
+See Nicolas Leclercq [example](http://www.tango-controls.org/community/forum/c/development/python/amazing-jupyter/)
 
 ---
 
 name: threading with PyTango
 layout: true
 
-threading with PyTango
+Threading with PyTango
 ============
 ---
 
+"Adding a thread is adding at least one problem" V.Michel
+
+Monitor lock
+
+Alternative :
+ * Tango Polling
+ * Polled Update command
+
 
 ---
 
-name:  green modes
+name:  Green modes
 layout: true
-green modes
+Green modes
 ============
 ---
 
-
+```python
+tango.GreenMode.Synchronous
+tango.GreenMode.Futures
+tango.GreenMode.Gevent
+tango.GreenMode.Asyncio
+```
 
 ---
 
-name: asyncio in PyTango
+name: Asyncio in PyTango
 layout: true
-asyncio in PyTango
+Asyncio in PyTango
 ============
 ---
+
+Fill free to test it ! 
 
 ---
 
