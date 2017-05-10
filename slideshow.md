@@ -146,6 +146,43 @@ Coding standards
  * There are plugins for most IDEs !
 
 ---
+
+Progress
+--------
+
+ * Got rid of metaclass definition
+
+ * ITango moved to a different project
+
+ * Rename PyTango module to tango
+
+ * Refactoring (asynchronous layer, etc.)
+
+ * Cleaning repo
+
+
+---
+
+Example
+-------
+
+Device servers with pytango 9.2.1
+
+```python
+from tango.server import Device, attribute
+
+class Sensor(Device):
+
+    @attribute(
+	    dtype=float)
+	def pressure(self):
+	    return 1.23
+
+if __ name__ == '__main__':
+    Sensor.run_server()
+```
+
+---
 name: Pending issues and future work.
 layout: true
 
