@@ -14,9 +14,9 @@ ICALEPCS 2017 - Barcelona
 
 *
 
-GitHub: [**vxgmichel/icalepcs-workshop**](https://github.com/vxgmichel/icalepcs-workshop)
+GitHub: [vxgmichel/icalepcs-workshop](https://github.com/vxgmichel/icalepcs-workshop)
 
-Slides: [**tinyurl.com/icalepcs-rp**](http://tinyurl.com/icalepcs-workshop)
+Slides: [tinyurl.com/icalepcs-rp](http://tinyurl.com/icalepcs-workshop)
 
 ---
 name: presentation
@@ -70,7 +70,7 @@ Playing with
 
 * an environment management system
 
-* that runs on Windows, macOS and Linux
+* it runs on Windows, macOS and Linux
 
 ---
 
@@ -83,19 +83,35 @@ Playing with conda
 
 ---
 
-Insalling miniconda:
+### Installing miniconda:
 
 ``` bash
-$ wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
-
-$
+$ wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+[...]
+$ bash Miniconda3-latest-Linux-x86_64.sh -b # No manual intervention
+[...]
+$ source ~/miniconda3/bin/activate
+(root) $ python
+Python 3.6.2 |Anaconda, Inc.| (default, Sep 30 2017, 18:42:57)
+[...]
+(root) $ conda info
+[...]
 ```
 
+`(root)` indicates we the main conda environment activated
 
+---
 
+### Creating a tango environment
 
-
-
+``` bash
+(root) $ conda create --name tango3 --channel tango-controls itango
+[...]
+(root) $ source activate tango3
+[...]
+(tango3) $ itango3
+[...]
+```
 
 
 
