@@ -5,13 +5,109 @@ layout: true
 name: title
 class: center, middle
 
-SOLARIS PyTango Workshop
-========================
+PyTango Workshop
+================
 
-Lukasz Zytniak - Vincent Michel - Antoine Dupré
+[Tiago Coutinho](https://github.com/tiagocoutinho) - [Vincent Michel](https://github.com/vxgmichel)
 
-May 10th 2017
+ICALEPCS 2017 - Barcelona
 
+*
+
+GitHub: [**vxgmichel/icalepcs-workshop**](https://github.com/vxgmichel/icalepcs-workshop)
+
+Slides: [**tinyurl.com/icalepcs-rp**](http://tinyurl.com/icalepcs-workshop)
+
+---
+name: presentation
+class: middle
+layout: true
+
+What is PyTango?
+================
+
+---
+
+bla bli blou
+
+---
+
+name: menu
+class: middle
+layout: true
+
+What's on the menu?
+===================
+
+---
+
+* A fresh python3 tango install using conda
+
+* ITango, a powerful client interface
+
+* Writing tango servers with 15 lines of python
+
+* Testing our servers without a database
+
+* A dive into Jupyter notebooks
+
+---
+
+name: menu
+class: middle
+layout: true
+
+Playing with
+============
+
+---
+
+.center[![conda](images/conda_logo.svg)]
+
+### Conda is both:
+
+* an open source package management system
+
+* an environment management system
+
+* that runs on Windows, macOS and Linux
+
+---
+
+name: menu
+class: middle
+layout: true
+
+Playing with conda
+==================
+
+---
+
+Insalling miniconda:
+
+``` bash
+$ wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+
+$
+```
+
+
+
+
+
+
+
+
+
+
+---
+name: none
+class: middle, center
+layout: true
+
+---
+
+# The next slides are from the previous workshop at SOLARIS
 
 ---
 
@@ -343,5 +439,3 @@ Asyncio in PyTango
 ---
 
 Fill free to test it !
-
----
