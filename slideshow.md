@@ -28,7 +28,7 @@ What is PyTango?
 
 ---
 
-bla bli blou
+bla bli blou blu
 
 ---
 
@@ -53,7 +53,6 @@ What's on the menu?
 
 ---
 
-name: menu
 class: middle
 layout: true
 
@@ -74,7 +73,6 @@ Playing with
 
 ---
 
-name: menu
 class: middle
 layout: true
 
@@ -109,7 +107,7 @@ Python 3.6.2 |Anaconda, Inc.| (default, Sep 30 2017, 18:42:57)
 [...]
 (root) $ source activate tango3
 [...]
-(tango3) $ itango3
+(tango3) $ itango
 [...]
 ```
 
