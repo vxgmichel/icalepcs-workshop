@@ -28,7 +28,29 @@ What is PyTango?
 
 ---
 
-bla bli blou blu
+* Python library
+
+* Binding over the C++ tango libray
+
+* ... using boost-python
+
+* relies on numpy
+
+* Multi OS: Linux, Windows, Mac
+
+* Works on python 2.6 .. 3.6
+
+---
+
+... plus some extras:
+
+* Pythonic API
+
+* asyncio and gevent event loop
+
+* itango (now a separate project)
+
+* alternative TANGO Database server (sqlite, redis backends)
 
 ---
 
@@ -163,17 +185,19 @@ PyTango History
 
 ---
 
-Started at Alba.
+Started at SOLEIL.
 
-Tiago Coutinho main contributor.
+2005 - Moved to ALBA. M. Taurel develops server.
 
-2013 - A new HLAPI for device servers
+2006 - T. Coutinho main contributor.
 
-2014 - Project moves with Tiago to the ESRF.
+2012 - A new API for device servers.
+
+2013 - Project moves with Tiago to the ESRF.
 
 2015 - MaxIV joins the game.
 
-2016 - PyTango9 is realeased.
+2016 - PyTango 9 is realeased.
 
 2017 - Welcome to Solaris.
 
