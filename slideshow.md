@@ -164,6 +164,277 @@ Checkout [anaconda.org/tango-controls](https://anaconda.org/tango-controls)
 
 ---
 
+bla bla blo
+
+
+
+
+
+---
+name: none
+layout: true
+
+---
+class: middle, center
+
+# Lunch break!
+
+---
+class: middle, center
+
+# Concurrency in Pytango
+
+
+[Tiago Coutinho](https://github.com/tiagocoutinho) - [Vincent Michel](https://github.com/vxgmichel)
+
+ICALEPCS 2017 - Barcelona
+
+*
+
+GitHub: [vxgmichel/icalepcs-workshop](https://github.com/vxgmichel/icalepcs-workshop)
+
+Slides: [tinyurl.com/icalepcs-rp](http://tinyurl.com/icalepcs-workshop)
+
+---
+class: middle
+
+Concurrency
+===========
+
+## First approach: **threading**
+
+- 1 listener + 1 thread per client
+
+- Cons: race conditions and thread overhead
+
+- Pros:  parallelization
+
+## Second approach: **asynchronous programming**
+
+- Single-threaded with a selector
+
+- Pros: support >10K clients
+
+- Cons: require specific libraries
+
+---
+
+Concurrency
+===========
+
+## Third approach: **message passing**
+
+> Don't communicate by sharing memory; share memory by communicating.
+> (R. Pike)
+
+- See Erlang and Go
+
+- Not incompatible with the previous two approaches.
+
+
+## Warning
+
+**⚠** Concurrency **IS NOT** parralellism
+
+---
+class: middle
+
+What about tango?
+=================
+
+## cppTango
+
+- **threading**: a tango server is at least 8 threads
+
+## pytango
+
+- **threading** since it's a binding to cppTango
+
+- **asynchronous programming** is also supported
+
+  * For both client and server interfaces
+
+  * Through **Gevent** or **Asyncio**
+
+---
+class: middle
+
+What's wrong with threading?
+============================
+
+- We have a problem!
+
+- Let's add a thread...
+
+No**•**w  we ha**2**ve prob**!**lems
+
+## How does tango solve it?
+
+- All requests are serialized using a monitor lock
+
+- Useful trick: use a **polled update command**
+
+---
+class: middle
+
+Asynchronous programming in python
+==================================
+
+### Many frameworks:
+
+  * [Twisted](https://twistedmatrix.com/trac)
+
+  * [Gevent](http://www.gevent.org/)
+
+  * [Tornado](http://www.tornadoweb.org/en/stable/)
+
+  * [Asyncio](https://docs.python.org/3/library/asyncio.html)
+
+  * [Curio](https://curio.readthedocs.io/en/latest/)
+
+  * [Trio](https://trio.readthedocs.io/en/latest/)
+
+---
+class: middle
+
+How does it work?
+=================
+
+- a **selector** monitors the file descriptors
+
+- a **loop** manages a callback queue
+
+- a **user interface** is provided:
+
+  * [Twisted](https://twistedmatrix.com/trac): **deferred** and **inline callbacks**
+
+  * [Gevent](http://www.gevent.org/): **asynchronous results** and **implicit coroutines**
+
+  * [Asyncio](https://docs.python.org/3/library/asyncio.html): **futures** and **explicit coroutines**
+
+  * [Curio](https://curio.readthedocs.io/en/latest/) and [Trio](https://trio.readthedocs.io/en/latest/): **explicit coroutines** only
+
+- concurrency is achieved using **execution units** (pseudo-threads):
+
+  - **greenlet** (gevent)
+
+  - **task** (asyncio, curio, trio)
+
+---
+class: middle
+
+Asynchronous pytango
+====================
+
+#### Also called green modes, checkout the docs:
+
+[pytango.readthedocs.io/en/stable/green_modes/green.html](http://pytango.readthedocs.io/en/stable/green_modes/green.html)
+
+---
+class: middle
+
+Gevent client mode example
+-------------------------
+
+``` bash
+# Install gevent
+$ conda install gevent
+[...]
+
+# Run python
+$ python
+```
+
+``` python
+>>> # Import from tango.gevent
+>>> from tango.gevent import DeviceProxy
+
+>>> # Create proxy (uses gevent)
+>>> dev = DeviceProxy("sys/tg_test/1")
+
+>>> # Read the state asynchronously
+>>> result = dev.state(wait=False)
+>>> result
+<gevent.event.AsyncResult at 0x1a74050>
+
+>>> # Wait for the result
+>>> state = result.get()
+>>> print(state)
+RUNNING
+```
+---
+class: middle
+
+Asyncio client mode example
+---------------------------
+
+```bash
+# Install an asyncio console
+$ pip install aioconsole
+[...]
+
+# Run apython
+$ apython
+[...]
+```
+
+```python
+>>> # Import from tango.asyncio
+>>> from tango.asyncio import DeviceProxy as asyncio_proxy
+
+>>> # Create proxy
+>>> device = await asyncio_proxy('sys/tg_test/1')
+
+>>> # Read attribute
+>>> result = await device.read_attribute('ampli')
+>>> result.value
+1.23
+```
+
+---
+class: middle
+
+A simple TCP server for tango attributes
+----------------------------------------
+
+- Try this [simple TCP server for Tango attributes](https://github.com/tango-controls/pytango/blob/develop/examples/asyncio_green_mode/tcp_server_example.py)
+
+- It runs on all interfaces on port 8888:
+
+    ```bash
+    $ python tango_tcp_server.py
+    Serving on 0.0.0.0 port 8888
+    ```
+
+- It can be accessed through netcat:
+
+    ```bash
+    $ ncat localhost 8888
+    >>> sys/tg_test/1/ampli
+    0.0
+    >>> sys/tg_test/1/state
+    RUNNING
+	>>> sys/tg_test/1/nope
+    DevFailed[
+    DevError[
+         desc = Attribute nope is not supported by device sys/tg_test/1
+       origin = AttributeProxy::real_constructor()
+       reason = API_UnsupportedAttribute
+     severity = ERR]
+     ]
+    ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ---
