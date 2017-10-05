@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import time
 import random
 import logging
 import gevent.server
@@ -8,10 +9,9 @@ DEFAULT_BIND = ''
 DEFAULT_PORT = 45000
 
 class Attr:
-    def __init__(self, name, *, initial_value=0.,
+    def __init__(self, *, initial_value=0.,
                  encode=lambda x: bytes(str(x), 'ascii'),
                  decode=float):
-        self.name = name
         self.value = initial_value
         self.encode = encode
         self.decode = decode
@@ -23,6 +23,28 @@ class Attr:
         self.value = self.decode(value)
 
 
+class Calibrate(Attr):
+
+    def set(self, value):
+        self.ts = time.time()
+        super().set(value)
+
+
+class State(Attr):
+    def __init__(self, calib, *args, **kwargs):
+        kwargs['initial_value'] = 0
+        kwargs['decode'] = int
+        super().__init__(*args, **kwargs)
+        self.calib = calib
+        calib.ts = 0
+
+    def get(self):
+        self.value = 0
+        if time.time() - self.calib.ts < 2:
+            self.value = 1
+        return super().get()
+
+
 class PSSimulator(gevent.server.StreamServer):
 
     class Error(Exception):
@@ -31,10 +53,14 @@ class PSSimulator(gevent.server.StreamServer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.log = logging.getLogger(f'simulator.{self.server_port}')
+        calib = Calibrate(initial_value=0)
         self.attrs = {
-            b'vol': Attr('voltage', initial_value=0.1),
-            b'curr': Attr('current', initial_value=0.),
+            b'stat': State(calib),
+            b'vol': Attr(initial_value=0.1),
+            b'curr': Attr(initial_value=0.),
+            b'calib': calib,
         }
+
     def __getitem__(self, name):
         return self.attrs[name].get()
 

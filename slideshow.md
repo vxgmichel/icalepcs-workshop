@@ -164,17 +164,90 @@ Checkout [anaconda.org/tango-controls](https://anaconda.org/tango-controls)
 
 ---
 
-bla bla blo
+name: ITango
+layout: true
 
-
-
-
+ITango
+============
 
 ---
-name: none
+
+### Features
+
+* IPython (jupyter) console
+
+* Direct access to tango classes
+
+* TANGO class sensitive device name auto-completion
+
+* Event monitor
+
+* Qt console
+
+* Notebook
+
+* User friendly error handling
+
+---
+
+### Hands on
+
+``` bash
+(tango3) $ conda install jupyter matplotlib
+[...]
+(tango3) $ jupyter notebook
+```
+
+```ipython
+In [2]: tg_test = TangoTest("sys/tg_test/1")
+[...]
+
+```
+
+---
+
+### Plan B:
+
+<a href="https://asciinema.org/a/0qfbv42rw496b942ny6lpdxrn">
+   <img src="https://asciinema.org/a/0qfbv42rw496b942ny6lpdxrn.png"
+   	style="display:block; margin:auto; width: 640px;"/>
+</a>
+
+---
+
+name: Server
+layout: true
+
+Uau! It's never been so easy
+============
+---
+
+Device servers with pytango >=9.2.1
+
+```python
+from time import sleep
+from tango.server import Device, attribute, command
+
+class PowerSupply(Device):
+
+    @attribute(dtype=float)
+    def voltage(self):
+        return 1.23
+
+    @command
+    def calibrate(self):
+        sleep(0.1)
+
+if __name__ == '__main__':
+    PowerSupply.run_server()
+```
+
+---
+
 layout: true
 
 ---
+
 class: middle, center
 
 # Lunch break!
@@ -619,17 +692,21 @@ Example
 Device servers with pytango >=9.2.1
 
 ```python
-from tango.server import Device, attribute
+from time import sleep
+from tango.server import Device, attribute, command
 
-class Sensor(Device):
+class PowerSupply(Device):
 
-    @attribute(
-	    dtype=float)
-	def pressure(self):
-	    return 1.23
+    @attribute(dtype=float)
+    def voltage(self):
+        return 1.23
 
-if __ name__ == '__main__':
-    Sensor.run_server()
+    @command
+    def calibrate(self):
+        sleep(0.1)
+
+if __name__ == '__main__':
+    PowerSupply.run_server()
 ```
 
 ---
