@@ -38,7 +38,7 @@ What is PyTango?
 
 * Multi OS: Linux, Windows, Mac
 
-* Works on python 2.6 .. 3.6
+* Works on python 2.7 .. 3.6
 
 ---
 
@@ -212,15 +212,13 @@ Current Status
 
 - github.com/tango-controls/pytango
 
-- 804 commits
+- 886 commits
 
-- 10 releases
+- 11 releases
 
-- 16 contributors
+- 26 contributors
 
-- latest release: v9.2.1
-
-- version 9.2.2 upcoming
+- latest release: v9.2.2
 
 
 ---
@@ -253,13 +251,18 @@ Unit-testing
  * Based on Pytest
 
  * Continious integration:
-    - TravisCI is running tests in a conda environment
-    - for python2.7, python3.4, python3.5
 
- * 574 tests:
-    - client tests.
-    - server tests.
-    - event tests.
+    - TravisCI is running tests in a conda environment
+
+    - for python2.7, python3.5, python3.6
+
+ * 606 tests:
+
+    - client tests
+
+    - server tests
+
+    - event tests
 
 ---
 
@@ -330,7 +333,7 @@ Progress
 Example
 -------
 
-Device servers with pytango 9.2.1
+Device servers with pytango >=9.2.1
 
 ```python
 from tango.server import Device, attribute
