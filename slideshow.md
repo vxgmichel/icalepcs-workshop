@@ -81,18 +81,35 @@ Playing with conda
 
 ---
 
+### Requirements for this workshop:
+
+* A 64 bits linux machine
+
+* An internet connection
+
+* A Tango database accessible (optional)
+
+* No sudo access is required
+
+---
+
 ### Installing miniconda:
 
 ``` bash
+# Download the latest miniconda
 $ wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 [...]
+
+# Extract to a local directory (~/miniconda3)
 $ bash Miniconda3-latest-Linux-x86_64.sh -b # No manual intervention
 [...]
+
+# Activate the conda environment
 $ source ~/miniconda3/bin/activate
+
+# Test python
 (root) $ python
 Python 3.6.2 |Anaconda, Inc.| (default, Sep 30 2017, 18:42:57)
-[...]
-(root) $ conda info
 [...]
 ```
 
@@ -103,14 +120,27 @@ Python 3.6.2 |Anaconda, Inc.| (default, Sep 30 2017, 18:42:57)
 ### Creating a tango environment
 
 ``` bash
-(root) $ conda create --name tango3 --channel tango-controls itango
+# Conda information
+(root) $ conda info
 [...]
+
+# Create a python3 + tango envrionment
+(root) $ conda create --name tango3 --channel tango-controls itango python=3
+[...]
+
+# Activate the tango3 environment
 (root) $ source activate tango3
-[...]
+
+# Test itango
 (tango3) $ itango
+ITango 9.2.2 -- An interactive Tango client.
+Running on top of Python 3.6.2, IPython 6.1 and PyTango 9.2.2
 [...]
 ```
 
+Checkout [anaconda.org/tango-controls](https://anaconda.org/tango-controls)
+
+---
 
 
 
