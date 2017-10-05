@@ -20,7 +20,6 @@ Slides: [tinyurl.com/icalepcs-rp](http://tinyurl.com/icalepcs-workshop)
 
 ---
 name: presentation
-class: middle
 layout: true
 
 What is PyTango?
@@ -48,7 +47,7 @@ What is PyTango?
 
 * asyncio and gevent event loop
 
-* itango (now a separate project)
+* ITango (now a separate project)
 
 * alternative TANGO Database server (sqlite, redis backends)
 
@@ -731,13 +730,54 @@ The facadedevice library.
 
 ---
 
-name: itango features and jupyter integration
+name: ITango
 layout: true
 
-itango features and jupyter integration
+ITango
 ============
 
-See Nicolas Leclercq [example](http://www.tango-controls.org/community/forum/c/development/python/amazing-jupyter/)
+---
+
+### Features
+
+* IPython (jupyter) console
+
+* Direct access to tango classes
+
+* TANGO class sensitive device name auto-completion
+
+* Event monitor
+
+* Qt console
+
+* Notebook
+
+* User friendly error handling
+
+---
+
+### Hands on
+
+``` bash
+(tango3) $ conda install jupyter matplotlib
+[...]
+(tango3) $ jupyter notebook
+```
+
+```ipython
+In [2]: tg_test = TangoTest("sys/tg_test/1")
+[...]
+
+```
+
+---
+
+### Plan B:
+
+<a href="https://asciinema.org/a/0qfbv42rw496b942ny6lpdxrn">
+   <img src="https://asciinema.org/a/0qfbv42rw496b942ny6lpdxrn.png"
+   	style="display:block; margin:auto; width: 640px;"/>
+</a>
 
 ---
 
