@@ -21,6 +21,7 @@ Slides: [tinyurl.com/icalepcs-rp](http://tinyurl.com/icalepcs-workshop)
 ---
 name: presentation
 layout: true
+class: middle
 
 What is PyTango?
 ================
@@ -423,12 +424,24 @@ A simple TCP server for tango attributes
      ]
     ```
 
+---
+class: middle
+
+More resources
+--------------
+
+### Asyncio overview
+
+- Slides: [vxgmichel.github.io/asyncio-overview](https://vxgmichel.github.io/asyncio-overview)
+
+- Repo: [github.com/vxgmichel/asyncio-overview](https://github.com/vxgmichel/asyncio-overview)
 
 
+### Previous pytango workshop
 
+- Slides: [antoinedupre.github.io/pytango-workshop](https://antoinedupre.github.io/pytango-workshop)
 
-
-
+- Repo: [github.com/AntoineDupre/pytango-workshop](https://github.com/AntoineDupre/pytango-workshop)
 
 
 
