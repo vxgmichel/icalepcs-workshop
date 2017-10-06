@@ -241,10 +241,43 @@ class PowerSupply(Device):
 if __name__ == '__main__':
     PowerSupply.run_server()
 ```
-
 ---
 
 layout: true
+
+---
+class: middle
+
+# Testing time!
+
+### Server:
+
+```bash
+$ python -m tango.test_context ps0.PowerSupply --host localhost
+Ready to accept request
+PowerSupply started on port 8888 with properties {}
+Device access: tango://localhost:8888/test/nodb/powersupply#dbase=no
+Server access: tango://localhost:8888/dserver/PowerSupply/powersupply#dbase=no
+```
+
+### Client:
+
+```bash
+$ itango
+ITango 9.2.2 -- An interactive Tango client.
+
+In [1]: d = Device('tango://localhost:8888/test/nodb/powersupply#dbase=no')
+
+In [2]: d.calibrate()
+
+In [3]: d.voltage
+Out[3]: 1.23
+```
+
+
+
+
+
 
 ---
 
