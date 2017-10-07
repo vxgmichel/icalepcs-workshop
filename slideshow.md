@@ -218,8 +218,8 @@ In [2]: tg_test = TangoTest("sys/tg_test/1")
 name: Server
 layout: true
 
-Uau! It's never been so easy
-============
+Uau! Writing device servers has never been so easy!
+------------------
 ---
 
 Device servers with pytango >=9.2.1
@@ -274,6 +274,24 @@ In [3]: d.voltage
 Out[3]: 1.23
 ```
 
+---
+class: middle
+
+# A dive into Jupyter
+
+```bash
+# Install Jupyter
+$ conda install jupyter
+[...]
+
+# Make sure the itango jupyter kernel is installed
+$ itango
+[...]
+
+# Enjoy!
+$ jupyter notebook
+[...]
+```
 
 
 
