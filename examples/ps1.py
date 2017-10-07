@@ -5,9 +5,11 @@ from socket import create_connection
 
 from tango.server import Device, attribute, command, device_property
 
+
 def connect(host, port):
     sock = create_connection((host, port))
     return sock.makefile('rwb', newline=b'\n', buffering=0)
+
 
 def write_readline(conn, msg):
     conn.write(msg)

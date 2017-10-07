@@ -256,11 +256,11 @@ class: middle
 ### Server:
 
 ```bash
-$ python -m tango.test_context ps0.PowerSupply --host yourhostname
+$ python -m tango.test_context ps0.PowerSupply --host $(hostname)
 Ready to accept request
 PowerSupply started on port 8888 with properties {}
-Device access: tango://localhost:8888/test/nodb/powersupply#dbase=no
-Server access: tango://localhost:8888/dserver/PowerSupply/powersupply#dbase=no
+Device access: tango://yourhostname:8888/test/nodb/powersupply#dbase=no
+Server access: tango://yourhostname:8888/dserver/PowerSupply/powersupply#dbase=no
 ```
 
 ### Client:
