@@ -166,6 +166,7 @@ Checkout [anaconda.org/tango-controls](https://anaconda.org/tango-controls)
 
 name: ITango
 layout: true
+class: middle
 
 ITango
 ============
@@ -217,9 +218,11 @@ In [2]: tg_test = TangoTest("sys/tg_test/1")
 
 name: Server
 layout: true
+class: middle
 
 Uau! Writing device servers has never been so easy!
 ------------------
+
 ---
 
 Device servers with pytango >=9.2.1
@@ -253,7 +256,7 @@ class: middle
 ### Server:
 
 ```bash
-$ python -m tango.test_context ps0.PowerSupply --host localhost
+$ python -m tango.test_context ps0.PowerSupply --host yourhostname
 Ready to accept request
 PowerSupply started on port 8888 with properties {}
 Device access: tango://localhost:8888/test/nodb/powersupply#dbase=no
@@ -266,13 +269,46 @@ Server access: tango://localhost:8888/dserver/PowerSupply/powersupply#dbase=no
 $ itango
 ITango 9.2.2 -- An interactive Tango client.
 
-In [1]: d = Device('tango://localhost:8888/test/nodb/powersupply#dbase=no')
+In [1]: d = Device('tango://yourhostname:8888/test/nodb/powersupply#dbase=no')
 
 In [2]: d.calibrate()
 
 In [3]: d.voltage
 Out[3]: 1.23
 ```
+
+---
+class: middle
+
+Let's try out events!
+---------------------
+
+Adding a polled attribute:
+
+```python
+import random
+
+[...]
+
+    @attribute(
+        dtype=float,
+        polling_period=500,  # 0.5 seconds
+        rel_change=1e-3)     # 0.1% relative change
+    def random(self):
+        return random.random()
+```
+
+Going back to ITango:
+
+```python
+In [4]: cb = tango.utils.EventCallback()
+
+In [5]: eid = d.subscribe_event('random', tango.EventType.CHANGE_EVENT, cb)
+
+2017-10-07 11:35:17.456138 TEST/NODB/POWERSUPPLY RANDOM#DBASE=NO CHANGE
+... [ATTR_VALID] 0.9369674083770559
+```
+
 
 ---
 class: middle
@@ -293,9 +329,7 @@ $ jupyter notebook
 [...]
 ```
 
-
-
-
+.center[![Jupyter](images/jupyter.jpg)]
 
 ---
 
